@@ -1,32 +1,32 @@
 <%- include("partials/header") %>
 
-<div class="rounded-xl bg-white/30 backdrop-blur-xl shadow-xl border border-white/30 p-6 max-w-xl mx-auto">
+<div class="rounded-xl bg-white/30 backdrop-blur-2xl shadow-xl border border-white/30 p-6 max-w-xl mx-auto">
   <h2 class="text-2xl font-bold text-indigo-600 mb-4 text-center drop-shadow-sm">✏️ Edit Task</h2>
 
   <form action="/edit/<%= task._id %>" method="POST" class="grid grid-cols-1 gap-4">
-    <input type="text" name="title" value="<%= task.title %>" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Title">
+    <input type="text" name="title" value="<%= task.title %>" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Title">
 
-    <input type="text" name="discription" value="<%= task.discription %>" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Description">
+    <input type="text" name="discription" value="<%= task.discription %>" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Description">
 
-    <input type="date" name="deadline" value="<%= task.deadline.toISOString().split('T')[0] %>" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
+    <input type="date" name="deadline" value="<%= task.deadline.toISOString().split('T')[0] %>" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
 
-    <select name="status" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
+    <select name="status" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
       <option value="pending" <%= task.status === 'pending' ? 'selected' : '' %>>Pending</option>
       <option value="in-progress" <%= task.status === 'in-progress' ? 'selected' : '' %>>In Progress</option>
       <option value="completed" <%= task.status === 'completed' ? 'selected' : '' %>>Completed</option>
     </select>
 
-    <select name="priority" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
+    <select name="priority" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
       <option value="low" <%= task.priority === 'low' ? 'selected' : '' %>>Low</option>
       <option value="medium" <%= task.priority === 'medium' ? 'selected' : '' %>>Medium</option>
       <option value="high" <%= task.priority === 'high' ? 'selected' : '' %>>High</option>
     </select>
 
-    <input type="text" name="followup" value="<%= task.followup %>" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Follow-up Person">
+    <input type="text" name="followup" value="<%= task.followup %>" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400" placeholder="Follow-up Person">
 
     <div class="flex justify-between mt-4">
       <a href="/" class="text-sm text-gray-600 underline">← Back to Home</a>
-      <button class="bg-indigo-500/80 text-white rounded-lg px-4 py-2 shadow backdrop-blur font-semibold tracking-wide border border-white/40">Update Task</button>
+      <button class="bg-indigo-500/80 text-white rounded-lg px-4 py-2 shadow backdrop-blur-2xl font-semibold tracking-wide border border-white/40">Update Task</button>
     </div>
   </form>
 </div>
