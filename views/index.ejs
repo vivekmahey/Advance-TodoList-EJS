@@ -1,7 +1,7 @@
 <%- include("partials/header") %>
 
 <!-- Add Task Form -->
-<form action="/add" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 rounded-xl bg-white/30 backdrop-blur-2xl shadow-xl border border-white/30 p-6">
+<form action="/add" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 rounded-xl bg-white/30 backdrop-blur-2xl shadow-xl border border-white/30 p-6">
   <input type="text" name="title" placeholder="Title" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
   <input type="text" name="discription" placeholder="Description" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
   <input type="date" name="deadline" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
@@ -21,7 +21,10 @@
   </select>
 
   <input type="text" name="followup" placeholder="Follow-up Person" required class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
-  
+
+  <!-- Main Image Upload -->
+  <input type="file" name="mainImage" accept="image/*" class="col-span-1 md:col-span-3">
+
   <button class="bg-indigo-500/80 text-white rounded-lg px-4 py-2 shadow backdrop-blur-2xl font-semibold tracking-wide border border-white/40 col-span-1 md:col-span-3">Add Task</button>
 </form>
 
@@ -34,8 +37,13 @@
       <div class="rounded-xl bg-white/30 backdrop-blur-2xl shadow-xl border border-white/30 p-6 border-l-4 
         <%= task.priority === 'high' ? 'border-red-400/80' : task.priority === 'medium' ? 'border-yellow-400/80' : 'border-green-400/80' %>">
         <h2 class="text-xl font-semibold mb-1 drop-shadow-sm"><%= task.title %></h2>
+
+        <!-- Main Image Display -->
+        <% if (task.mainImage) { %>
+          <img src="/uploads/<%= task.mainImage %>" width="100" class="rounded mb-2 shadow" />
+        <% } %>
+
         <p class="text-gray-700 mb-2"><%= task.discription %></p>
-        
         <p class="text-sm"><strong>Status:</strong> <%= task.status %></p>
         <p class="text-sm"><strong>Deadline:</strong> <%= task.deadline.toDateString() %></p>
         <p class="text-sm"><strong>Priority:</strong> <%= task.priority %></p>
@@ -54,6 +62,7 @@
   <% } %>
 </div>
 
+<!-- Pagination -->
 <div class="flex justify-center gap-2 mt-6">
   <% for (let i = 1; i <= totalPages; i++) { %>
     <a 

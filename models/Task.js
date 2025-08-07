@@ -30,7 +30,11 @@ const taskSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  mainImage: { 
+    type: String 
+  },
+
 });
 
 module.exports = mongoose.model('Task', taskSchema);

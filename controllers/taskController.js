@@ -60,31 +60,33 @@ const getTasks = async (req, res) => {
 
 
 
+const addTask = async (req, res) => {
+  try {
+    const { title, discription, deadline, status, priority, followup } = req.body;
+    const mainImage = req.file ? req.file.filename : null;
 
-const addTask= async(req,res)=>{
-    try{
-        const { title, discription, deadline, status, priority, followup } = req.body;
-         if (!title || !discription || !deadline || !status || !priority || !followup) {
-         return res.status(400).send("All fields are required.");
-         }
+    if (!title || !discription || !deadline || !status || !priority || !followup) {
+      return res.status(400).send("All fields required.");
+    }
 
-     const newTask = new Task({
+    const newTask = new Task({
       title,
       discription,
       deadline,
       status,
       priority,
       followup,
+      mainImage
     });
 
-    await newTask.save()
-    res.redirect('/');
-    }
-    catch(error){
-       console.log("Error while adding task:", error);
-       res.status(500).send("Server Error");
-    }
-}
+    await newTask.save();
+    res.redirect("/");
+  } catch (error) {
+    console.log("Error while adding task:", error);
+    res.status(500).send("Server Error");
+  }
+};
+
 
 const deleteTask = async (req, res) => {
   try {
