@@ -1,0 +1,29 @@
+{
+  "name": "advance-todolist-ejs",
+  "version": "1.0.0",
+  "description": "A feature-rich Advanced To-Do List built with Node.js, Express, EJS, and MongoDB. Includes user authentication, flash messages, task filtering, deadline reminders, and responsive UI.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekmahey/Advance-TodoList-EJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vivekmahey/Advance-TodoList-EJS/issues"
+  },
+  "homepage": "https://github.com/vivekmahey/Advance-TodoList-EJS#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.17.0"
+  }
+}
