@@ -9,7 +9,7 @@ const app=express();
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI,{
-    useNewUrlPaser:true,
+    useNewUrlParser:true,
     useUnifiedTopology: true
 }).then(()=>{
     console.log("MongoDB Connected !!")
@@ -28,5 +28,5 @@ app.set('view engine','ejs');
 const taskRoutes= require('./routes/taskRoutes');
 app.use('/', taskRoutes);
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
