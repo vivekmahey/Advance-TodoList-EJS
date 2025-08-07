@@ -1,15 +1,31 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    title: {
+  title: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
-  description: String,
-  isCompleted: {
-    type: Boolean,
-    default: false
+  discription: {
+    type: String,
+    required: true
+  },
+  deadline: {
+    type: Date,
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'in-progress', 'completed'],
+    default: 'pending'
+  },
+  priority: {
+    type: String,
+    enum: ['low', 'medium', 'high'],
+    default: 'medium'
+  },
+  followup: {
+    type: String,
+    required: true
   },
   createdAt: {
     type: Date,
@@ -17,4 +33,4 @@ const taskSchema = new mongoose.Schema({
   }
 });
 
-module.exports=mongoose.model('Task',taskSchema)
+module.exports = mongoose.model('Task', taskSchema);
