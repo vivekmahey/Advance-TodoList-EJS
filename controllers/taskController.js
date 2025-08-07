@@ -8,16 +8,53 @@
 
 const Task = require('../models/Task');
 
-const getTasks = async (req, res) => {
-    try{
-        const tasks =await Task.find().sort({createdAt:-1});
-        res.render('index',{tasks});
-    }
-    catch(error){
-        console.log("Error while fetching tasks: ",error);
-        res.status(500).send("Server Error !");
-    } 
-};
+// const getTasks = async (req, res) => {
+//     try{
+//         const tasks =await Task.find().sort({createdAt:-1});
+//         res.render('index',{tasks});
+//     }
+//     catch(error){
+//         console.log("Error while fetching tasks: ",error);
+//         res.status(500).send("Server Error !");
+//     } 
+// };
+
+
+
+router.get("/", async (req, res) => {
+  const searchQuery = req.query.search || "";
+  const priorityFilter = req.query.priority || "";
+  const statusFilter = req.query.status || "";
+  const page = parseInt(req.query.page) || 1;
+  const limit = 5;
+
+  const query = {
+    title: { $regex: searchQuery, $options: "i" },
+  };
+
+  if (priorityFilter) query.priority = priorityFilter;
+  if (statusFilter) query.status = statusFilter;
+
+  const totalTasks = await Task.countDocuments(query);
+  const tasks = await Task.find(query)
+    .sort({ createdAt: -1 })
+    .skip((page - 1) * limit)
+    .limit(limit);
+
+  res.render("index", {
+    tasks,
+    searchQuery,
+    currentPage: page,
+    totalPages: Math.ceil(totalTasks / limit),
+    priorityFilter,
+    statusFilter,
+  });
+});
+
+
+
+
+
 
 const addTask= async(req,res)=>{
     try{

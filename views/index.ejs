@@ -6,17 +6,19 @@
   <input type="text" name="discription" placeholder="Description" required class="border p-2 rounded">
   <input type="date" name="deadline" required class="border p-2 rounded">
   
-  <select name="status" required class="border p-2 rounded">
-    <option value="pending">Pending</option>
-    <option value="in-progress">In Progress</option>
-    <option value="completed">Completed</option>
-  </select>
+ <select name="status" class="border p-2 rounded">
+  <option value="">All Status</option>
+  <option value="pending" <%= statusFilter === 'pending' ? 'selected' : '' %>>Pending</option>
+  <option value="in-progress" <%= statusFilter === 'in-progress' ? 'selected' : '' %>>In Progress</option>
+  <option value="completed" <%= statusFilter === 'completed' ? 'selected' : '' %>>Completed</option>
+</select>
 
-  <select name="priority" required class="border p-2 rounded">
-    <option value="low">Low</option>
-    <option value="medium" selected>Medium</option>
-    <option value="high">High</option>
-  </select>
+ <select name="priority" class="border p-2 rounded">
+  <option value="">All Priority</option>
+  <option value="low" <%= priorityFilter === 'low' ? 'selected' : '' %>>Low</option>
+  <option value="medium" <%= priorityFilter === 'medium' ? 'selected' : '' %>>Medium</option>
+  <option value="high" <%= priorityFilter === 'high' ? 'selected' : '' %>>High</option>
+</select>
 
   <input type="text" name="followup" placeholder="Follow-up Person" required class="border p-2 rounded">
   
@@ -51,5 +53,20 @@
     <% }); %>
   <% } %>
 </div>
+
+
+<div class="flex justify-center gap-2 mt-6">
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <a 
+      href="/?search=<%= searchQuery %>&page=<%= i %>"
+      class="px-3 py-1 border rounded <%= i === currentPage ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' %>"
+    >
+      <%= i %>
+    </a>
+  <% } %>
+</div>
+
+
+
 
 <%- include("partials/footer") %>
