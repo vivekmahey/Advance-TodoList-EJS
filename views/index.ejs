@@ -1,28 +1,28 @@
 <%- include("partials/header") %>
 
 <!-- Add Task Form -->
-<form action="/add" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-white p-6 rounded shadow">
-  <input type="text" name="title" placeholder="Title" required class="border p-2 rounded">
-  <input type="text" name="discription" placeholder="Description" required class="border p-2 rounded">
-  <input type="date" name="deadline" required class="border p-2 rounded">
+<form action="/add" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 rounded-xl bg-white/30 backdrop-blur-xl shadow-xl border border-white/30 p-6">
+  <input type="text" name="title" placeholder="Title" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
+  <input type="text" name="discription" placeholder="Description" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
+  <input type="date" name="deadline" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
   
- <select name="status" class="border p-2 rounded">
-  <option value="">All Status</option>
-  <option value="pending" <%= statusFilter === 'pending' ? 'selected' : '' %>>Pending</option>
-  <option value="in-progress" <%= statusFilter === 'in-progress' ? 'selected' : '' %>>In Progress</option>
-  <option value="completed" <%= statusFilter === 'completed' ? 'selected' : '' %>>Completed</option>
-</select>
+  <select name="status" class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
+    <option value="">All Status</option>
+    <option value="pending" <%= statusFilter === 'pending' ? 'selected' : '' %>>Pending</option>
+    <option value="in-progress" <%= statusFilter === 'in-progress' ? 'selected' : '' %>>In Progress</option>
+    <option value="completed" <%= statusFilter === 'completed' ? 'selected' : '' %>>Completed</option>
+  </select>
 
- <select name="priority" class="border p-2 rounded">
-  <option value="">All Priority</option>
-  <option value="low" <%= priorityFilter === 'low' ? 'selected' : '' %>>Low</option>
-  <option value="medium" <%= priorityFilter === 'medium' ? 'selected' : '' %>>Medium</option>
-  <option value="high" <%= priorityFilter === 'high' ? 'selected' : '' %>>High</option>
-</select>
+  <select name="priority" class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900">
+    <option value="">All Priority</option>
+    <option value="low" <%= priorityFilter === 'low' ? 'selected' : '' %>>Low</option>
+    <option value="medium" <%= priorityFilter === 'medium' ? 'selected' : '' %>>Medium</option>
+    <option value="high" <%= priorityFilter === 'high' ? 'selected' : '' %>>High</option>
+  </select>
 
-  <input type="text" name="followup" placeholder="Follow-up Person" required class="border p-2 rounded">
+  <input type="text" name="followup" placeholder="Follow-up Person" required class="bg-white/30 backdrop-blur-xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
   
-  <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition col-span-1 md:col-span-3">Add Task</button>
+  <button class="bg-indigo-500/80 text-white rounded-lg px-4 py-2 shadow backdrop-blur font-semibold tracking-wide border border-white/40 col-span-1 md:col-span-3">Add Task</button>
 </form>
 
 <!-- Task Cards -->
@@ -31,9 +31,9 @@
     <div class="text-center text-gray-500 col-span-full">No tasks available.</div>
   <% } else { %>
     <% tasks.forEach(task => { %>
-      <div class="bg-white rounded-lg shadow p-5 border-l-4 
-        <%= task.priority === 'high' ? 'border-red-500' : task.priority === 'medium' ? 'border-yellow-400' : 'border-green-500' %>">
-        <h2 class="text-xl font-semibold mb-1"><%= task.title %></h2>
+      <div class="rounded-xl bg-white/30 backdrop-blur-xl shadow-xl border border-white/30 p-6 border-l-4 
+        <%= task.priority === 'high' ? 'border-red-400/80' : task.priority === 'medium' ? 'border-yellow-400/80' : 'border-green-400/80' %>">
+        <h2 class="text-xl font-semibold mb-1 drop-shadow-sm"><%= task.title %></h2>
         <p class="text-gray-700 mb-2"><%= task.discription %></p>
         
         <p class="text-sm"><strong>Status:</strong> <%= task.status %></p>
@@ -43,10 +43,10 @@
 
         <div class="flex justify-between mt-4">
           <form action="/edit/<%= task._id %>" method="get">
-            <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm">Edit</button>
+            <button class="bg-blue-500/80 text-white rounded-lg px-3 py-1 shadow backdrop-blur font-semibold border border-white/40 text-sm">Edit</button>
           </form>
           <form action="/delete/<%= task._id %>" method="POST">
-            <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Delete</button>
+            <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500/80 text-white rounded-lg px-3 py-1 shadow backdrop-blur font-semibold border border-white/40 text-sm">Delete</button>
           </form>
         </div>
       </div>
@@ -54,19 +54,15 @@
   <% } %>
 </div>
 
-
 <div class="flex justify-center gap-2 mt-6">
   <% for (let i = 1; i <= totalPages; i++) { %>
     <a 
       href="/?search=<%= searchQuery %>&page=<%= i %>"
-      class="px-3 py-1 border rounded <%= i === currentPage ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' %>"
+      class="px-3 py-1 border border-white/30 rounded bg-white/20 backdrop-blur text-gray-700 <%= i === currentPage ? 'bg-indigo-500/50 text-white' : '' %>"
     >
       <%= i %>
     </a>
   <% } %>
 </div>
-
-
-
 
 <%- include("partials/footer") %>
