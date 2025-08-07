@@ -1,0 +1,55 @@
+<%- include("partials/header") %>
+
+<!-- Add Task Form -->
+<form action="/add" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-white p-6 rounded shadow">
+  <input type="text" name="title" placeholder="Title" required class="border p-2 rounded">
+  <input type="text" name="discription" placeholder="Description" required class="border p-2 rounded">
+  <input type="date" name="deadline" required class="border p-2 rounded">
+  
+  <select name="status" required class="border p-2 rounded">
+    <option value="pending">Pending</option>
+    <option value="in-progress">In Progress</option>
+    <option value="completed">Completed</option>
+  </select>
+
+  <select name="priority" required class="border p-2 rounded">
+    <option value="low">Low</option>
+    <option value="medium" selected>Medium</option>
+    <option value="high">High</option>
+  </select>
+
+  <input type="text" name="followup" placeholder="Follow-up Person" required class="border p-2 rounded">
+  
+  <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition col-span-1 md:col-span-3">Add Task</button>
+</form>
+
+<!-- Task Cards -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <% if (tasks.length === 0) { %>
+    <div class="text-center text-gray-500 col-span-full">No tasks available.</div>
+  <% } else { %>
+    <% tasks.forEach(task => { %>
+      <div class="bg-white rounded-lg shadow p-5 border-l-4 
+        <%= task.priority === 'high' ? 'border-red-500' : task.priority === 'medium' ? 'border-yellow-400' : 'border-green-500' %>">
+        <h2 class="text-xl font-semibold mb-1"><%= task.title %></h2>
+        <p class="text-gray-700 mb-2"><%= task.discription %></p>
+        
+        <p class="text-sm"><strong>Status:</strong> <%= task.status %></p>
+        <p class="text-sm"><strong>Deadline:</strong> <%= task.deadline.toDateString() %></p>
+        <p class="text-sm"><strong>Priority:</strong> <%= task.priority %></p>
+        <p class="text-sm"><strong>Follow-up:</strong> <%= task.followup %></p>
+
+        <div class="flex justify-between mt-4">
+          <form action="/edit/<%= task._id %>" method="get">
+            <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm">Edit</button>
+          </form>
+          <form action="/delete/<%= task._id %>" method="POST">
+            <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  <% } %>
+</div>
+
+<%- include("partials/footer") %>
