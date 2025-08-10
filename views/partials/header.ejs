@@ -16,15 +16,17 @@
     <nav class="flex items-center space-x-6">
       <a href="/" class="text-gray-600 hover:text-blue-500">Home</a>
 
-      <% if (!user) { %>
-        <!-- Show if NOT logged in -->
-        <a href="/login" class="text-gray-600 hover:text-blue-500">Login</a>
-        <a href="/signup" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Sign Up</a>
-      <% } else { %>
-        <!-- Show if logged in -->
-        <a href="/app" class="text-gray-600 hover:text-blue-500">Dashboard</a>
-        <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
-      <% } %>
+<% if (!user) { %>
+  <!-- Show if NOT logged in -->
+  <a href="/login" class="text-gray-600 hover:text-blue-500">Login</a>
+  <a href="/signup" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Sign Up</a>
+<% } else { %>
+  <!-- Show if logged in -->
+  <a href="/tasks" class="text-gray-600 hover:text-blue-500">Tasks</a>
+  <a href="/tasks/add" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Add New Task</a>
+  <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+<% } %>
+
     </nav>
   </div>
 </header>

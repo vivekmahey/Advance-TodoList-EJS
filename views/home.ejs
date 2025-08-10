@@ -2,11 +2,20 @@
 
 <!-- Hero Section -->
 <section class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+  <div class="max-w-7xl mx-auto px-2 py-7 mb-5 grid md:grid-cols-2 gap-12 items-center">
     <div>
       <h1 class="text-5xl font-bold text-gray-900 leading-tight mb-6">
         Manage your tasks <span class="text-blue-600">without the stress</span>.
       </h1>
+
+
+     <% if (role && user) { %>
+  <p class="text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 rounded-xl shadow-lg inline-block mb-6 animate-fade-in">
+    ✅ Welcome back, <span class="capitalize"><%= user.name %></span> — You are logged in as <span class="uppercase tracking-wide"><%= role %></span>
+  </p>
+<% } %>
+
+      
       <p class="text-gray-600 mb-8 text-lg">
         TaskFlow is your personal assistant for work, study, and daily life. Track deadlines, prioritize efficiently, and collaborate seamlessly.
       </p>

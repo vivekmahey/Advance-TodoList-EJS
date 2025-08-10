@@ -1,25 +1,33 @@
 <%- include("partials/header") %>
 
-<div class="flex items-center justify-center py-12">
-  <div class="rounded-xl bg-white/30 backdrop-blur-2xl shadow-xl border border-white/30 p-6 max-w-md w-full">
-    <h1 class="text-2xl font-bold text-indigo-600 mb-4 text-center drop-shadow-sm">Login</h1>
+<div class="flex items-center justify-center min-h-[calc(100vh-140px)] py-12 bg-gradient-to-br from-indigo-50 to-white">
+  <div class="rounded-xl bg-white shadow-2xl border-2 border-indigo-200 p-8 max-w-md w-full transform transition duration-300 hover:scale-[1.01]">
+    <h1 class="text-3xl font-bold text-indigo-600 mb-6 text-center tracking-wide">Login</h1>
 
-    <form action="/login" method="POST" class="grid grid-cols-1 gap-4">
-      <input name="email" type="email" placeholder="Email" required 
-        class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
+    <form action="/login" method="POST" class="space-y-5">
+      <!-- Email -->
+      <div>
+        <input name="email" type="email" placeholder="Email" required
+          class="w-full bg-gray-50 border rounded-lg px-4 py-3 shadow-inner focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition placeholder-gray-400">
+      </div>
 
-      <input name="password" type="password" placeholder="Password" required 
-        class="bg-white/30 backdrop-blur-2xl outline-none border border-white/50 rounded-lg px-3 py-2 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 text-gray-900 placeholder-gray-400">
+      <!-- Password -->
+      <div>
+        <input name="password" type="password" placeholder="Password" required
+          class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 shadow-inner focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition placeholder-gray-400">
+      </div>
 
-      <button type="submit" 
-        class="bg-indigo-500/80 text-white rounded-lg px-4 py-2 shadow backdrop-blur-2xl font-semibold tracking-wide border border-white/40">
+      <!-- Submit Button -->
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-3 font-semibold tracking-wide shadow-lg focus:ring-2 focus:ring-indigo-300 transition">
         Login
       </button>
     </form>
 
-    <p class="text-center text-sm text-gray-600 mt-4">
-      Don't have an account? 
-      <a href="/signup" class="text-indigo-600 underline">Signup here</a>
+    <!-- Signup Link -->
+    <p class="text-center text-sm text-gray-600 mt-6">
+      Don't have an account?
+      <a href="/signup" class="text-indigo-600 font-medium hover:underline">Signup here</a>
     </p>
   </div>
 </div>

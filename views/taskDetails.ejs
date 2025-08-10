@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+
+<div class=" max-w-3xl mx-auto mt-10  backdrop-blur-2xl rounded-2xl shadow-2xl p-10  my-10 ">
+  <h1 class="text-3xl font-bold mb-4"><%= task.title %></h1>
+
+  <% if (task.mainImage) { %>
+    <img src="/uploads/<%= task.mainImage %>" alt="<%= task.title %>" 
+         class="w-full h-64 object-cover rounded-xl mb-6 shadow-md" />
+  <% } %>
+
+  <p class="mb-4"><%= task.description %></p>
+
+  <div class="grid grid-cols-2 gap-4 text-sm">
+    <p><strong>Status:</strong> <%= task.status %></p>
+    <p><strong>Deadline:</strong> <%= task.deadline.toDateString() %></p>
+    <p><strong>Priority:</strong> <%= task.priority %></p>
+    <p><strong>Follow-up:</strong> <%= task.followup %></p>
+  </div>
+
+  <div class="mt-6">
+    <a href="/tasks" class="bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600">⬅ Back to Tasks</a>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

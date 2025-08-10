@@ -5,10 +5,10 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  discription: {
-    type: String,
-    required: true
-  },
+  description: {
+  type: String,
+  required: true
+},
   deadline: {
     type: Date,
     required: true

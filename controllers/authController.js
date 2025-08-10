@@ -29,14 +29,12 @@ exports.signup = async (req, res) => {
       role: role || "user",
     });
 
-    // Optional: auto-login after signup
-    req.session.user = {
-      _id: newUser._id,
-      name: newUser.name,
-      role: newUser.role,
-    };
+    
 
-    res.redirect("/app");
+  res.redirect("/login");
+
+
+
   } catch (err) {
     console.error("Signup Error:", err);
     res.render("signup", { error: "Something went wrong. Please try again." });
@@ -64,7 +62,8 @@ exports.login = async (req, res) => {
       role: user.role,
     };
 
-    res.redirect("/app");
+ res.redirect("/");
+
   } catch (err) {
     console.error("Login Error:", err);
     res.render("login", { error: "Something went wrong. Please try again." });
@@ -74,6 +73,6 @@ exports.login = async (req, res) => {
 // Logout
 exports.logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/login");
+    res.redirect("/");
   });
 };

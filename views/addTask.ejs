@@ -1,0 +1,41 @@
+<%- include("partials/header") %>
+
+<!-- Full height container to center form -->
+<div class="flex flex-col min-h-[calc(100vh-140px)] justify-center items-center px-4">
+  <form action="/tasks/add" method="POST" enctype="multipart/form-data" 
+        class="grid grid-cols-1 md:grid-cols-3 gap-5 rounded-2xl bg-white/40 backdrop-blur-lg shadow-2xl border border-white/50 p-8 w-full max-w-4xl ">
+    
+    <input type="text" name="title" placeholder="Task Title" required
+           class="bg-white/50 outline-none border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+
+    <input type="text" name="description" placeholder="Short Description" required
+           class="bg-white/50 outline-none border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+
+    <input type="date" name="deadline" required
+           class="bg-white/50 outline-none border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+
+    <select name="status" class="bg-white/50 border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+      <option value="pending">Pending</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <select name="priority" class="bg-white/50 border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+
+    <input type="text" name="followup" placeholder="Follow-up Person" required
+           class="bg-white/50 border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+
+    <input type="file" name="mainImage" accept="image/*" 
+           class="col-span-1 md:col-span-3 bg-white/50 border border-white/70 rounded-xl px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 transition">
+
+    <button class="col-span-1 md:col-span-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl px-5 py-3 shadow-lg font-semibold tracking-wide transition-transform transform hover:scale-[1.02] focus:ring-2 focus:ring-indigo-300">
+      ➕ Add Task
+    </button>
+  </form>
+</div>
+
+<%- include("partials/footer") %>
