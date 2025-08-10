@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Advanced To-Do App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TaskFlow — Organize Your Work</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-tr from-indigo-300 via-gray-200 to-purple-100 bg-no-repeat bg-fixed text-gray-900">
-  <!-- Optional: Subtle diagonal light glow overlay (enhanced blur for fuller feel) -->
-  <div class="pointer-events-none fixed left-[-10vw] top-[-10vh] w-[80vw] h-[50vh] bg-gradient-to-tr from-indigo-300/20 to-pink-300/0 blur-3xl rounded-full z-0"></div>
-  
-  <div class="max-w-6xl mx-auto px-4 py-6">
-    <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6 drop-shadow-md">📝 Advanced To-Do List</h1>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold text-gray-800">TaskMaster</a>
+
+    <!-- Nav Links -->
+    <nav class="flex items-center space-x-6">
+      <a href="/" class="text-gray-600 hover:text-blue-500">Home</a>
+
+      <% if (!user) { %>
+        <!-- Show if NOT logged in -->
+        <a href="/login" class="text-gray-600 hover:text-blue-500">Login</a>
+        <a href="/signup" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Sign Up</a>
+      <% } else { %>
+        <!-- Show if logged in -->
+        <a href="/app" class="text-gray-600 hover:text-blue-500">Dashboard</a>
+        <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
+
+  <main>

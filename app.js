@@ -44,12 +44,22 @@ app.use(session({
 
 
 
+// expose user to views
+app.use((req, res, next) => {
+  res.locals.user = req.session && req.session.user ? req.session.user : null;
+  next();
+});
+
+
+
 
 
 // task routes
 const taskRoutes= require('./routes/taskRoutes');
-app.use('/', taskRoutes);
+const homeRoutes = require("./routes/homeRoutes");
+app.use("/", homeRoutes);
 app.use("/", authRoutes);
+app.use("/app", taskRoutes);
 
 
 const PORT = process.env.PORT || 3000;

@@ -1,0 +1,104 @@
+<%- include("partials/header", { title: "TaskFlow — Calmly Organize Your Life" }) %>
+
+<!-- Hero Section -->
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 class="text-5xl font-bold text-gray-900 leading-tight mb-6">
+        Manage your tasks <span class="text-blue-600">without the stress</span>.
+      </h1>
+      <p class="text-gray-600 mb-8 text-lg">
+        TaskFlow is your personal assistant for work, study, and daily life. Track deadlines, prioritize efficiently, and collaborate seamlessly.
+      </p>
+      <div class="flex gap-4">
+        <a href="/signup" class="px-8 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">Get Started Free</a>
+        <a href="#features" class="px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-100">See Features</a>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <img src="../assets/pic-removebg-preview.png" 
+           alt="Organized desk with planner" 
+           class="max-w-full h-auto rounded-lg ">
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Powerful features for every workflow</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" 
+             class="w-full h-40 object-cover rounded mb-4" alt="">
+        <h3 class="font-semibold mb-2 text-lg">Organized Dashboard</h3>
+        <p class="text-gray-600 text-sm">All tasks in one view, neatly categorized and filterable by priority or status.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600" 
+             class="w-full h-40 object-cover rounded mb-4" alt="">
+        <h3 class="font-semibold mb-2 text-lg">Image Attachments</h3>
+        <p class="text-gray-600 text-sm">Attach main images to your tasks for easy reference and better clarity.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600" 
+             class="w-full h-40 object-cover rounded mb-4" alt="">
+        <h3 class="font-semibold mb-2 text-lg">Admin & User Roles</h3>
+        <p class="text-gray-600 text-sm">Role-based access to manage projects securely and efficiently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-12">What our users say</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-gray-50 rounded-lg shadow">
+        <p class="text-gray-600 italic">"TaskFlow changed how I organize my day. The calm design keeps me focused."</p>
+        <div class="mt-4 font-semibold text-gray-900">Priya Sharma</div>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-lg shadow">
+        <p class="text-gray-600 italic">"The image attachment feature is perfect for visual planners like me."</p>
+        <div class="mt-4 font-semibold text-gray-900">Ravi Kumar</div>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-lg shadow">
+        <p class="text-gray-600 italic">"Finally a to-do list app that feels light yet powerful."</p>
+        <div class="mt-4 font-semibold text-gray-900">Aisha Khan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="font-semibold text-lg">Is TaskFlow free?</h3>
+        <p class="text-gray-600">Yes! You can start for free with all core features. Premium plans are available for teams.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg">Can I use it on mobile?</h3>
+        <p class="text-gray-600">Absolutely. TaskFlow is fully responsive and works on all devices.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg">How do Admin and User roles work?</h3>
+        <p class="text-gray-600">Admins can manage all tasks and users, while Users can manage their own tasks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-emerald-500 py-16 text-center text-white">
+  <h2 class="text-3xl font-bold mb-4">Ready to get organized?</h2>
+  <p class="mb-8">Join thousands of users who trust TaskFlow for their daily productivity.</p>
+  <a href="/signup" class="px-8 py-3 bg-white text-emerald-600 rounded-lg font-semibold shadow hover:bg-gray-100">
+    Create My Free Account
+  </a>
+</section>
+
+<%- include("partials/footer") %>
